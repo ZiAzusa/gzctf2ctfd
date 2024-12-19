@@ -1,0 +1,2 @@
+# GZCTF2CTFd
+GZCTF到CTFd的迁移脚本
