@@ -56,8 +56,6 @@ game_json = get_api(f"/api/edit/games", {"count": 30}).text
 game_data = json.loads(game_json)
 for game in game_data['data'][::-1]:
     print("adding game: "+game['title'])
-    class Challenge(Challenge):
-        category = game['title']
     challenge_json = get_api(f"/api/edit/games/{game['id']}/challenges").text
     challenge_data = json.loads(challenge_json)
     for challenge in challenge_data:
@@ -67,9 +65,10 @@ for game in game_data['data'][::-1]:
         print("adding challenge: " + info['title'])
         class Challenge(Challenge):
             id = challenge_id
-            name = info['tag']+": "+info['title']
+            name = info['title']
             description = info['content']
             value = info['originalScore']
+            category = game['title']+"."+info['tag']
             type = "dynamic_docker" if "Container" in info['type'] else "dynamic"
         challenges_db['count']  += 1
         challenges_db['results'].append(class2dic(Challenge()))
