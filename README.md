@@ -8,6 +8,6 @@ GZCTF到CTFd的迁移脚本
 
 打开CTFd，登录管理员账号并存下Cookie。
 
-然后运行脚本即可。
+然后运行main.py。
 
 之后将export文件夹的内容全部重新打包，使用CTFd的导入功能导入即可。
