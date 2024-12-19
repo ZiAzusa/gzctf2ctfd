@@ -19,11 +19,6 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
 }
 
-challenge_id = 0 # challenges.json最后一道题目的id
-file_id = 0 # file.json最后一个文件的id，以此类推
-flag_id = 0
-hint_id = 0
-
 def get_api(api, params={}, host=host, headers=headers):
     for i in range(3):
         try:
@@ -42,16 +37,20 @@ def class2dic(obj):
 
 with open("export/db/challenges.json", "r") as f:
     challenges_db = json.load(f)
+    challenge_id = challenges_db['results'][-1]['id']
 with open("export/db/dynamic_challenge.json", "r") as f:
     dynamic_challenge_db = json.load(f)
 with open("export/db/dynamic_docker_challenge.json", "r") as f:
     dynamic_docker_challenge_db = json.load(f)
 with open("export/db/files.json", "r") as f:
     files_db = json.load(f)
+    file_id = files_db['results'][-1]['id']
 with open("export/db/flags.json", "r") as f:
     flags_db = json.load(f)
+    flag_id = flags_db['results'][-1]['id']
 with open("export/db/hints.json", "r") as f:
     hints_db = json.load(f)
+    hint_id = hints_db['results'][-1]['id']
 
 game_json = get_api(f"/api/edit/games", {"count": 30}).text
 game_data = json.loads(game_json)
