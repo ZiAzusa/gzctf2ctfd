@@ -37,20 +37,20 @@ def class2dic(obj):
 
 with open("export/db/challenges.json", "r") as f:
     challenges_db = json.load(f)
-    challenge_id = challenges_db['results'][-1]['id']
+    challenge_id = challenges_db['results'][-1]['id'] if challenges_db['results'] else 0
 with open("export/db/dynamic_challenge.json", "r") as f:
     dynamic_challenge_db = json.load(f)
 with open("export/db/dynamic_docker_challenge.json", "r") as f:
     dynamic_docker_challenge_db = json.load(f)
 with open("export/db/files.json", "r") as f:
     files_db = json.load(f)
-    file_id = files_db['results'][-1]['id']
+    file_id = files_db['results'][-1]['id'] if files_db['results'] else 0
 with open("export/db/flags.json", "r") as f:
     flags_db = json.load(f)
-    flag_id = flags_db['results'][-1]['id']
+    flag_id = flags_db['results'][-1]['id'] if flags_db['results'] else 0
 with open("export/db/hints.json", "r") as f:
     hints_db = json.load(f)
-    hint_id = hints_db['results'][-1]['id']
+    hint_id = hints_db['results'][-1]['id'] if hints_db['results'] else 0
 
 game_json = get_api(f"/api/edit/games", {"count": 30}).text
 game_data = json.loads(game_json)
