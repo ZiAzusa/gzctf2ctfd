@@ -1,8 +1,11 @@
-import ujson as json
 import requests
 import hashlib
 import time
 import os
+try:
+    import ujson as json
+except ImportError:
+    import json
 from template import *
 
 host = "127.0.0.1:12345" # 在这里填写GZCTF的主机
