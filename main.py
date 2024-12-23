@@ -82,7 +82,7 @@ for game in game_data['data'][::-1]:
         if "Container" in info['type']:
             class DynamicDockerChallenge(DynamicDockerChallenge):
                 id = challenge_id
-                memory_limit = info['memoryLimit']
+                memory_limit = str(info['memoryLimit'])+"m"
                 cpu_limit = info['cpuCount']
                 dynamic_score = 1 if info['minScoreRate'] != 1 else 0
                 docker_image = info['containerImage']
